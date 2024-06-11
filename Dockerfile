@@ -15,6 +15,8 @@ COPY . .
 
 RUN npm run build
 
+RUN npx prisma generate
+
 # Exponha a porta em que a aplicação vai rodar
 EXPOSE 10000
 
