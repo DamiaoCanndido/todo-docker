@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build
 
 # Exponha a porta em que a aplicação vai rodar
-EXPOSE 3333
+EXPOSE 10000
 
 # Comando para iniciar a aplicação
 CMD ["npm", "run", "start"]
