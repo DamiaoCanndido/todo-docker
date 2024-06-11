@@ -9,6 +9,6 @@ app.get('/', (req, res) => {
     return res.send({ok: true})
 })
 
-app.listen(process.env.PORT || 3333, () => {
+app.listen(3333, () => {
     console.log('running on 3333');
 });
