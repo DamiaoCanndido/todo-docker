@@ -4,25 +4,28 @@ import { prisma } from './db/prisma'
 
 dotenv.config()
 
-const port = process.env.PORT || 10000
-
 const app = express()
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
 app.get('/', async (req, res) => {
     const task = await prisma.task.findMany()
-    return res.send({ task })
+    return res.json({ task })
 })
 
 app.post('/', async (req, res) => {
-    const { name } = req.body
+    type NameBody = {
+        name: string
+    }
+    const { name }: NameBody = req.body
     const task = await prisma.task.create({
         data: {
             name,
         }
     })
-    return res.send({ task })
+    return res.json({ task })
 })
 
-app.listen(port, () => {
-    console.log(`running on ${port}`);
+app.listen(3333, () => {
+    console.log(`running on 3333`);
 });
